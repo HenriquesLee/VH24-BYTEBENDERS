@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    margin: 0;
+    height: 100vh;
+}
+
+/* Sidebar Profile Section */
+.sidebar {
+    background-color: #a92fa0;
+    color: white;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h3 {
+    margin: 10px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.profile-section p, li {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.profile-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #b379bc;
+    color: white;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Request Cards */
+.request-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.request-card:hover {
+    transform: translateY(-5px);
+}
+
+.request-card p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin: 15px 0;
+    position: relative;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.progress {
+    background: linear-gradient(90deg, #a92fa0 0%, #f4b0d5 100%);
+    height: 100%;
+    width: 0%; /* Initial width */
+    border-radius: 8px;
+    transition: width 0.8s ease-in-out;
+}
+
+/* Dropdown Update Status */
+.update-status {
+    background-color: #a92fa0;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.update-status:focus {
+    outline: none;
+}
+
+.update-status:hover {
+    background-color: #88287b;
+}
+
+/* Scrollbar for Main Content */
+.main-content {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #a92fa0 #f4f4f4;
+}
+
+.main-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background-color: #a92fa0;
+    border-radius: 10px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+}

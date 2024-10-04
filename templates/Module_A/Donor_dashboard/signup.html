@@ -1,10 +1,10 @@
-Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login & Sign-Up</title>
-    <link rel="stylesheet" href="templates/styles/main.css" />
+    <link rel="stylesheet" href="styles/main.css" />
     <style>
       body {
         background-image: url("bg.jpg");
@@ -20,31 +20,16 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
 
       .container {
         background-color: #a92fa0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(96, 6, 76, 0.874);
         text-align: center;
         width: 90%;
         max-width: 400px;
-        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
-
-      .container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* background-color: rgba(65, 66, 68, 0.8); */
-        border-radius: 10px;
-        z-index: 1;
+        position: relative;
       }
 
       h2,
@@ -79,9 +64,10 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
         padding: 0.8rem;
         border: none;
         border-radius: 4px;
-        background-color: #ffff;
-        color: #e2bfe4;
+        background-color: #ffffff;
+        color: #74206e;
         font-size: 1rem;
+        margin-bottom: 1rem;
       }
 
       input::placeholder {
@@ -89,8 +75,6 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
       }
 
       .submit-btn {
-        display: block;
-        margin: auto;
         width: 100%;
         padding: 0.8rem;
         background-color: #ffffff;
@@ -112,6 +96,7 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
         margin-top: 1rem;
         color: #ffffff;
         cursor: pointer;
+        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -202,7 +187,6 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
       function handleSignUp(event) {
         event.preventDefault(); // Prevent form from submitting
         try {
-          const uniqueId = document.getElementById("uniqueId").value;
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
@@ -210,7 +194,7 @@ Module_A/Donor_dashboard/bg.png<!DOCTYPE html>
 
           // Perform validation or API call here
 
-          console.log("Sign Up:", { uniqueId, name, email, password, contact });
+          console.log("Sign Up:", { name, email, password, contact });
         } catch (error) {
           console.error("Error in sign up:", error);
         }
