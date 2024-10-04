@@ -105,6 +105,7 @@
     <div class="container" id="formContainer">
       <!-- Sign-Up Form -->
       <form id="signupForm" onsubmit="handleSignUp(event)">
+        <h2>Sign Up</h2>
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" placeholder="John Doe" required />
@@ -158,13 +159,7 @@
             required
           />
         </div>
-        <button
-          type="submit"
-          class="submit-btn"
-          onclick="window.location.href='donor_dashboard.html'"
-        >
-          Login
-        </button>
+        <button type="submit" class="submit-btn">Login</button>
         <div class="toggle-link" onclick="toggleForms()">
           Don't have an account? Sign Up
         </div>
@@ -173,15 +168,14 @@
 
     <script>
       function toggleForms() {
-        const signupForm = document.getElementById("signupForm");
-        const loginForm = document.getElementById("loginForm");
-
-        if (signupForm.style.display === "none") {
-          signupForm.style.display = "block";
-          loginForm.style.display = "none";
+        const signupForm = document.getElementById('signupForm');
+        const loginForm = document.getElementById('loginForm');
+        if (signupForm.style.display === 'none') {
+          signupForm.style.display = 'block';
+          loginForm.style.display = 'none';
         } else {
-          signupForm.style.display = "none";
-          loginForm.style.display = "block";
+          signupForm.style.display = 'none';
+          loginForm.style.display = 'block';
         }
       }
 
@@ -192,24 +186,31 @@
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           const contact = document.getElementById("contact").value;
-
+    
           // Perform validation or API call here
-
+    
           console.log("Sign Up:", { name, email, password, contact });
+    
+          // Redirect to the same dashboard after sign-up (just like after login)
+          window.location.href = 'donor_dashboard.html'; // Change the URL to your actual dashboard page
+    
         } catch (error) {
           console.error("Error in sign up:", error);
         }
       }
-
+    
       function handleLogin(event) {
         event.preventDefault(); // Prevent form from submitting
         try {
           const email = document.getElementById("loginEmail").value;
           const password = document.getElementById("loginPassword").value;
-
+    
           // Perform validation or API call here
-
+    
           console.log("Login:", { email, password });
+    
+          // Redirect to the same dashboard after login
+          window.location.href = 'donor_dashboard.html'; // Change the URL to your actual dashboard page
         } catch (error) {
           console.error("Error in login:", error);
         }
