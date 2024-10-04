@@ -1,0 +1,140 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0e3149, #073b58); /* Gradient background */
+    height: 100vh;
+    overflow: hidden; /* Hide any scrollbars */
+}
+
+/* Main container for positioning */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Profile Section (Top Left) */
+.profile-section {
+    position: relative; /* It will move with the page */
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #07b092;
+}
+
+/* Add Section (Bottom Right) */
+.add-section {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-btn {
+    background-color: #07b092;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+/* Tooltip Animation */
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear, transform 0.3s ease-in-out;
+    background-color: #07b092;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    bottom: 70px;
+    right: -20px;
+    width: 120px;
+    z-index: 10;
+    transform: scale(0.9); /* Initial state */
+}
+
+/* Hover Effect for + Button */
+.add-btn:hover {
+    transform: scale(1.2); /* Grow button on hover */
+    background-color: #0e3149; /* Change color on hover */
+}
+
+.add-btn:hover + .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1); /* Tooltip grows into place */
+}
+
+/* Campaign Section */
+.campaign-section {
+    margin-top: 80px;
+    height: 80vh;
+    overflow-y: scroll; /* Enable scrolling */
+    scrollbar-width: none; /* Hide the scrollbar */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.campaign-section::-webkit-scrollbar {
+    display: none;
+}
+
+.campaign-title {
+    font-size: 24px;
+    color: #07b092;
+    margin-left: 10px;
+}
+
+/* Campaign Containers */
+.campaigns {
+    margin-top: 10px;
+}
+
+.campaign {
+    background-color: white;
+    border: 3px solid #07b092;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 85%; /* Adjusted width */
+    margin-left: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #07b092;
+    border-radius: 5px;
+}
