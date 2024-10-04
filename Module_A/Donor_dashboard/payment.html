@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .donation-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .donate-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .donate-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="donation-container">
+        <h1>Support Our Cause</h1>
+        <p>Your donation can make a difference.</p>
+        <button class="donate-button" id="donateButton">Donate Now</button>
+    </div>
+
+    <script>
+        document.getElementById("donateButton").addEventListener("click", function() {
+            // Redirect to the donation link
+            window.location.href = "https://donate.stripe.com/test_5kA8yR9PA3DLdLa3cc"; // Replace with your actual donation link
+        });
+    </script>
+</body>
+</html>
