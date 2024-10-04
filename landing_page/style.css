@@ -1,0 +1,143 @@
+/* Universal reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Hero section with animations */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent);
+    z-index: 1;
+    animation: moveGradient 8s infinite ease-in-out;
+}
+
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Content styling */
+.content {
+    z-index: 2;
+    text-align: center;
+    color: #FFD700;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Fade-in animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px #FFD700;
+}
+
+.content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #FFD700;
+    text-shadow: 0 0 5px #FFD700;
+}
+
+/* Form box styling */
+.form-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #FFD700;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #FFD700;
+}
+
+.role-options {
+    margin-bottom: 1.5rem;
+    color: #FFD700;
+}
+
+.role-options label {
+    margin-right: 1rem;
+}
+
+input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: #FFD700;
+}
+
+/* Submit button with hover effect */
+.submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #FFC400;
+    transform: translateY(-3px);
+}
+
+/* Keyframe for subtle background movement */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}

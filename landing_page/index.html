@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dynamic Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1 class="fade-in">Connect for a Greater Cause</h1>
+            <p class="fade-in">Join us as a Donor, Retailer, or Organization.</p>
+
+            <div class="form-box fade-in">
+                <form action="#" method="post">
+                    <h2>Login / Sign Up</h2>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    
+                    <div class="role-options">
+                        <label><input type="radio" name="role" value="Donor" required> Donor</label>
+                        <label><input type="radio" name="role" value="Retailer" required> Retailer</label>
+                        <label><input type="radio" name="role" value="Organization" required> Organization</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get Started</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
