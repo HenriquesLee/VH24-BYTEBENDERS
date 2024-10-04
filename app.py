@@ -26,6 +26,14 @@ def init_db():
                             password TEXT NOT NULL,
                             contact TEXT NOT NULL,
                             user_type TEXT DEFAULT 'org')''')
+        
+        cursor.execute('''CREATE TABLE IF NOT EXISTS Request (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            campaign_name TEXT NOT NULL,
+                            additional_requirements TEXT NOT NULL,
+                            item TEXT NOT NULL,
+                            quantity INTEGER NOT NULL,
+                            approx_price REAL NOT NULL)''')
 
         conn.commit()
 
@@ -42,23 +50,31 @@ def landing_page():
 def donor_signup_page():
     return render_template('Module_A/Donor_dashboard/signup.html')
 
+
+# Donor Dashboard 
+@app.route('/donor_dashboard_page')
+def donor_dashboard_page():
+    return render_template('Module_A/Donor_dashboard/donor_dashboard.html')
 # Organization signup page
 @app.route('/organisation_signup_page')
 def organisation_signup_page():
     return render_template('Module_C/organisation_login_signup/signup.html')
-
+# Organization signup page
+@app.route('/organisation_dashboard_page')
+def organisation_dashboard_page():
+    return render_template('Module_C/organisation_login_signup/org_dashboard/dashboard.html')
 # Handle Donor signup form submission
 @app.route('/donor_signup', methods=['POST'])
 def donor_signup():
-    name = request.form['name']
-    email = request.form['email']
-    password = request.form['password']
-    contact = request.form['contact']
+    donor_name = request.form['name']
+    donor_email = request.form['loginEmail']
+    donor_password = request.form['password']
+    donor_contact = request.form['contact']
 
     # Check if email already exists in Donor table
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Donor WHERE email = ?", (email,))
+        cursor.execute("SELECT * FROM Donor WHERE email = ?", (donor_email,))
         existing_donor = cursor.fetchone()
         
         if existing_donor:
@@ -67,11 +83,11 @@ def donor_signup():
         
         # Insert new donor data into Donor table
         cursor.execute("INSERT INTO Donor (name, email, password, contact) VALUES (?, ?, ?, ?)", 
-                       (name, email, password, contact))
+                       (donor_name, donor_email, donor_password, donor_contact))
         conn.commit()
     
     flash("Donor signed up successfully!")
-    return redirect(url_for('landing_page'))
+    return redirect(url_for('donor_dashboard_page'))
 
 # Handle Organization signup form submission
 @app.route('/organisation_signup', methods=['POST'])
@@ -98,31 +114,63 @@ def organisation_signup():
         conn.commit()
     
     flash("Organization signed up successfully!")
-    return redirect(url_for('org_dashboard'))  
-
-@app.route('/org_dashboard')
-def org_dashboard():
-    # Serve the dashboard after successful signup
-    return render_template('Module_C/organisation_login_signup/org_dashboard/dashboard.html')
+    return redirect(url_for('organisation_dashboard_page'))  
 
 # Define a route for donor login (and similarly for organization login)
 @app.route('/donor_login', methods=['POST'])
 def donor_login():
-    email = request.form['email']
-    password = request.form['password']
+    donor_login_email = request.form['loginEmail']
+    donor_login_password = request.form['loginPassword']
 
     # Verify donor credentials
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Donor WHERE email = ? AND password = ?", (email, password))
+        cursor.execute("SELECT * FROM Donor WHERE email = ? AND password = ?", (donor_login_email, donor_login_password))
         donor = cursor.fetchone()
 
         if donor:
             flash("Login successful!")
-            return redirect(url_for('donor_dashboard'))  # Redirect to donor dashboard upon login
+            return redirect(url_for('donor_dashboard_page'))  # Redirect to donor dashboard upon login
         else:
             flash("Invalid credentials. Please try again.", "error")
             return redirect(url_for('donor_signup_page'))
+        
+@app.route('/org_login', methods=['POST'])
+def org_login():
+    org_login_email = request.form['loginEmail']
+    org_login_password = request.form['loginPassword']
+
+    # Verify donor credentials
+    with sqlite3.connect("users.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Organization WHERE email = ? AND password = ?", (org_login_email, org_login_password))
+        donor = cursor.fetchone()
+
+        if donor:
+            flash("Login successful!")
+            return redirect(url_for('organisation_dashboard_page'))  # Redirect to donor dashboard upon login
+        else:
+            flash("Invalid credentials. Please try again.", "error")
+            return redirect(url_for('organisation_signup_page'))
+        
+@app.route('/submit-request', methods=['POST'])
+def submit_request():
+    campaign_name = request.form['ngo-name']
+    additional_requirements = request.form['reason']
+    item = request.form['item']
+    quantity = request.form['quantity']
+    approx_price = request.form['approx-price']
+
+    # Insert the form data into the Request table
+    with sqlite3.connect("users.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute('''INSERT INTO Request (campaign_name, additional_requirements, item, quantity, approx_price)
+                          VALUES (?, ?, ?, ?, ?)''',
+                       (campaign_name, additional_requirements, item, quantity, approx_price))
+        conn.commit()
+
+    flash("Request submitted successfully!")
+    return redirect(url_for('organisation_dashboard_page'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5000)

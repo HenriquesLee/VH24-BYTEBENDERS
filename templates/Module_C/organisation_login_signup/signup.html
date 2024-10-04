@@ -118,25 +118,33 @@
   <body>
     <div class="container" id="formContainer">
       <!-- Sign-Up Form -->
-      <form id="signupForm" onsubmit="handleSignUp(event)">
+      <form id="signupForm" action="/organisation_signup" method="POST">
         <div class="form-group">
           <label for="uniqueId">Unique ID</label>
           <input
             type="text"
             id="uniqueId"
+            name="uniqueId"
             placeholder="Enter your Unique ID"
             required
           />
         </div>
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="John Doe" required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Doe"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="example@domain.com"
             required
           />
@@ -146,15 +154,22 @@
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="********"
             required
           />
         </div>
         <div class="form-group">
           <label for="contact">Contact Number</label>
-          <input type="tel" id="contact" placeholder="+1234567890" required />
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            placeholder="+1234567890"
+            required
+          />
         </div>
-        <button type="submit" class="submit-btn" onclick="window.location.href='org_dashboard/dashboard.html'">Sign Up</button>
+        <button type="submit" class="submit-btn">Sign Up</button>
         <div class="toggle-link" onclick="toggleForms()">
           Already have an account? Login
         </div>
@@ -168,6 +183,7 @@
           <input
             type="text"
             id="loginEmail"
+            name="loginEmail"
             placeholder="example@domain.com or username"
             required
           />
@@ -177,6 +193,7 @@
           <input
             type="password"
             id="loginPassword"
+            name="loginPassword"
             placeholder="********"
             required
           />

@@ -104,17 +104,24 @@
   <body>
     <div class="container" id="formContainer">
       <!-- Sign-Up Form -->
-      <form id="signupForm" onsubmit="handleSignUp(event)">
+      <form id="signupForm" action="/donor_signup" method="POST">
         <h2>Sign Up</h2>
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="John Doe" required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Doe"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input
             type="email"
             id="email"
+            name="loginEmail"
             placeholder="example@domain.com"
             required
           />
@@ -124,13 +131,20 @@
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="********"
             required
           />
         </div>
         <div class="form-group">
           <label for="contact">Contact Number</label>
-          <input type="tel" id="contact" placeholder="+1234567890" required />
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            placeholder="+1234567890"
+            required
+          />
         </div>
         <button type="submit" class="submit-btn">Sign Up</button>
         <div class="toggle-link" onclick="toggleForms()">
@@ -139,13 +153,20 @@
       </form>
 
       <!-- Login Form -->
-      <form id="loginForm" style="display: none" onsubmit="handleLogin(event)">
+      <form
+        id="loginForm"
+        action="/donor_login"
+        method="POST"
+        style="display: none"
+        onsubmit="handleLogin(event)"
+      >
         <h2>Login</h2>
         <div class="form-group">
           <label for="loginEmail">Email/Username</label>
           <input
             type="text"
             id="loginEmail"
+            name="loginEmail"
             placeholder="example@domain.com or username"
             required
           />
@@ -155,6 +176,7 @@
           <input
             type="password"
             id="loginPassword"
+            name="loginPassword"
             placeholder="********"
             required
           />
@@ -168,14 +190,14 @@
 
     <script>
       function toggleForms() {
-        const signupForm = document.getElementById('signupForm');
-        const loginForm = document.getElementById('loginForm');
-        if (signupForm.style.display === 'none') {
-          signupForm.style.display = 'block';
-          loginForm.style.display = 'none';
+        const signupForm = document.getElementById("signupForm");
+        const loginForm = document.getElementById("loginForm");
+        if (signupForm.style.display === "none") {
+          signupForm.style.display = "block";
+          loginForm.style.display = "none";
         } else {
-          signupForm.style.display = 'none';
-          loginForm.style.display = 'block';
+          signupForm.style.display = "none";
+          loginForm.style.display = "block";
         }
       }
 
@@ -186,31 +208,30 @@
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           const contact = document.getElementById("contact").value;
-    
+
           // Perform validation or API call here
-    
+
           console.log("Sign Up:", { name, email, password, contact });
-    
+
           // Redirect to the same dashboard after sign-up (just like after login)
-          window.location.href = 'donor_dashboard.html'; // Change the URL to your actual dashboard page
-    
+          window.location.href = "donor_dashboard.html"; // Change the URL to your actual dashboard page
         } catch (error) {
           console.error("Error in sign up:", error);
         }
       }
-    
+
       function handleLogin(event) {
         event.preventDefault(); // Prevent form from submitting
         try {
           const email = document.getElementById("loginEmail").value;
           const password = document.getElementById("loginPassword").value;
-    
+
           // Perform validation or API call here
-    
+
           console.log("Login:", { email, password });
-    
+
           // Redirect to the same dashboard after login
-          window.location.href = 'donor_dashboard.html'; // Change the URL to your actual dashboard page
+          window.location.href = "donor_dashboard.html"; // Change the URL to your actual dashboard page
         } catch (error) {
           console.error("Error in login:", error);
         }
