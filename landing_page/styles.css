@@ -1,10 +1,9 @@
-/* Apply the color palette */
 body {
-    font-family: 'Roboto', sans-serif; /* Professional font for the body */
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-color: #0e3149; /* Dark Blue Background */
+    background-color: #0e3149;
     color: white;
     display: flex;
     justify-content: center;
@@ -15,9 +14,8 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url('https://example.com/charity-background.jpg'); /* Black to transparent gradient */
-    background-size: cover;
-    background-position: center;
+    background: url('bg.png') no-repeat center center fixed; /* Set the uploaded image as background */
+    background-size: cover; /* Ensure the image covers the entire section */
 }
 
 .overlay {
@@ -33,8 +31,8 @@ body {
     position: relative;
     z-index: 1;
     text-align: center;
-    opacity: 0; /* Start as invisible */
-    animation: fadeIn 1s forwards; /* Fade-in animation */
+    opacity: 0;
+    animation: fadeIn 1s forwards;
 }
 
 @keyframes fadeIn {
@@ -49,90 +47,80 @@ body {
 }
 
 .logo {
-    width: 200px; /* Increased logo size */
-    margin-bottom: 20px;
-    border-radius: 10px; /* Rounded corners for the logo */
+    width: 350px; /* Increased the logo size */
+    margin-bottom: 10px; /* Reduced margin below the logo */
+    border-radius: 10px;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif; /* Professional font for the heading */
     font-size: 3.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for better visibility */
+    margin: 5px 0; /* Reduced margin above and below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .subheading {
     font-size: 1.8rem;
-    margin-bottom: 30px;
-    font-weight: 300; /* Lighter font weight for the subheading */
+    margin-bottom: 30px; /* Keep this for spacing below the subheading */
+    font-weight: 300;
 }
 
-/* Updated styles for the form box */
+/* Form box styling */
 .form-box {
-    background-color: #050704; /* Dark background */
-    padding: 30px; /* Increased padding for the form box */
+    background-color: #050704;
+    padding: 30px;
     border-radius: 10px;
     display: inline-block;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .role-title {
-    color: #07b092; /* Updated Color for Role Title */
+    color: #07b092;
     margin-bottom: 20px;
 }
 
 .role-options {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between cards */
-    margin-bottom: 20px; /* Space between options and button */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .role-card {
-    background-color: #07b092; /* Teal Background for Cards */
+    background-color: #07b092;
     border-radius: 10px;
     padding: 20px;
-    width: 150px; /* Fixed width for cards */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
-    cursor: pointer; /* Pointer cursor for clickable cards */
+    width: 150px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
     text-align: center;
-    margin: 0 10px; /* Adjusted padding between cards */
+    margin: 0 10px;
 }
 
 .role-card:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    background-color: #06a083; /* Darker Teal on Hover */
+    transform: scale(1.05);
+    background-color: #06a083;
 }
 
-.role-card h3 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.role-card p {
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
+/* Button styling */
 button.submit-btn {
-    width: 100%;
-    padding: 12px; /* Increased padding for a larger button */
-    background-color: #07b092; /* Teal Button */
-    color: #E3C6A0; /* Text color */
+    width: 120px; /* Smaller buttons */
+    padding: 10px; /* Reduced padding */
+    background-color: #0e3149; /* Changed background color */
+    color: #E3C6A0;
     border: none;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 20px; /* Rounded corners for stylish look */
     cursor: pointer;
-    font-size: 1.2rem; /* Increased font size */
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition */
-    margin: 10px 0; /* Space between buttons */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+    font-size: 1rem; /* Slightly smaller font */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin: 10px 5px; /* Space between buttons */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 button.submit-btn:hover {
-    background-color: #06a083; /* Darker Teal on Hover */
-    transform: translateY(-3px); /* Lift the button on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+    background-color: #06a083; /* Keep hover effect */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 button.submit-btn:focus {
-    outline: none; /* Remove default focus outline */
+    outline: none;
 }
