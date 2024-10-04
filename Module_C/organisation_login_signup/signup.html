@@ -28,7 +28,7 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             text-align: center;
             width: 90%;
-            max-width: 350px;
+            max-width: 400px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -58,7 +58,7 @@
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: left;
             width: 100%;
         }
@@ -70,7 +70,8 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="tel"] {
             width: 100%;
             padding: 0.8rem;
             border: none;
@@ -94,7 +95,7 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s ease;
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
         }
 
         .submit-btn:hover {
@@ -113,7 +114,14 @@
     <div class="container" id="formContainer">
         <!-- Sign-Up Form -->
         <form id="signupForm" onsubmit="handleSignUp(event)">
-            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="uniqueId">Unique ID</label>
+                <input type="text" id="uniqueId" placeholder="Enter your Unique ID" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="John Doe" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" placeholder="example@domain.com" required>
@@ -121,6 +129,10 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" placeholder="********" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" placeholder="+1234567890" required>
             </div>
             <button type="submit" class="submit-btn">Sign Up</button>
             <div class="toggle-link" onclick="toggleForms()">Already have an account? Login</div>
@@ -137,7 +149,7 @@
                 <label for="loginPassword">Password</label>
                 <input type="password" id="loginPassword" placeholder="********" required>
             </div>
-            <button type="submit" class="submit-btn">Login</button>
+            <button type="submit" class="submit-btn" onclick = "window.location.href='org_dashboard/dashboard.html'">Login</button>
             <div class="toggle-link" onclick="toggleForms()">Don't have an account? Sign Up</div>
         </form>
     </div>
@@ -157,19 +169,34 @@
         }
 
         function handleSignUp(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            console.log('Sign Up:', { email, password });
-            // Add your sign-up logic here
+            event.preventDefault(); // Prevent form from submitting
+            try {
+                const uniqueId = document.getElementById('uniqueId').value;
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const contact = document.getElementById('contact').value;
+                
+                // Perform validation or API call here
+                
+                console.log('Sign Up:', { uniqueId, name, email, password, contact });
+            } catch (error) {
+                console.error('Error in sign up:', error);
+            }
         }
 
         function handleLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            console.log('Login:', { email, password });
-            // Add your login logic here
+            event.preventDefault(); // Prevent form from submitting
+            try {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Perform validation or API call here
+                
+                console.log('Login:', { email, password });
+            } catch (error) {
+                console.error('Error in login:', error);
+            }
         }
     </script>
 </body>
