@@ -36,7 +36,7 @@ body {
 
 .username {
     font-weight: bold;
-    color: #ffffff;
+    color: #a92fa0;
 }
 
 /* Add Section (Bottom Right) */
@@ -50,7 +50,7 @@ body {
 }
 
 .add-btn {
-    background-color: #e2bfe4;
+    background-color: #a92fa0;
     color: white;
     border: none;
     border-radius: 50%;
@@ -83,7 +83,7 @@ body {
 /* Hover Effect for + Button */
 .add-btn:hover {
     transform: scale(1.2); /* Grow button on hover */
-    background-color: #0e3149; /* Change color on hover */
+    background-color: #a92fa0; /* Change color on hover */
 }
 
 .add-btn:hover + .tooltip {
@@ -107,7 +107,7 @@ body {
 
 .campaign-title {
     font-size: 24px;
-    color: #ffffff;
+    color:#a92fa0;
     margin-left: 10px;
 }
 
@@ -118,7 +118,7 @@ body {
 
 .campaign {
     background-color: white;
-    border: 3px solid #07b092;
+    border: 3px solid #a92fa0;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
@@ -138,7 +138,7 @@ body {
 
 .progress {
     height: 100%;
-    background-color: #07b092;
+    background-color: #a92fa0;
     border-radius: 5px;
 }
 
@@ -227,7 +227,7 @@ form textarea {
 
 /* Styling the submit button */
 form button {
-    background-color: #0e3149;
+    background-color: #a92fa0;
     color: white;
     padding: 12px;
     border: none;
@@ -238,5 +238,5 @@ form button {
 }
 
 form button:hover {
-    background-color: #0b2e3c; /* Darker shade on hover */
+    background-color: #a92fa0; /* Darker shade on hover */
 }
