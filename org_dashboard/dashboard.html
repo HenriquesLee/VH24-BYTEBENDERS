@@ -1,121 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <title>Campaign Page</title>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <!-- Profile Section -->
-      <div class="profile-section">
-        <img src="profile.jpg" alt="Profile" class="profile-pic" />
-        <span class="username">Username</span>
-      </div>
-
-      <!-- Add Button with Tooltip -->
-      <div class="add-section" id="add-section">
-        <button class="add-btn">+</button>
-        <div class="tooltip">Add New Campaign</div>
-      </div>
-
-      <!-- Campaign Section -->
-      <div class="campaign-section">
-        <h2 class="campaign-title">Current Campaign</h2>
-
-        <!-- Stack of Campaign Containers -->
-        <div class="campaigns">
-          <!-- 10 Campaign Containers -->
-          <div class="campaign">
-            <h3>Campaign 1</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 40%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 2</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 60%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 3</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 50%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 4</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 30%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 5</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 80%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 6</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 70%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 7</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 90%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 8</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 20%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 9</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 65%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 10</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 10%"></div>
-            </div>
-          </div>
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="profile.jpg" alt="Profile" class="profile-pic" />
+            <span class="username">Username</span>
         </div>
-      </div>
+
+        <!-- Add Button with Tooltip -->
+        <div class="add-section" id="add-section">
+            <button class="add-btn">+</button>
+            <div class="tooltip">Add New Campaign</div>
+        </div>
+
+        <!-- Campaign Section -->
+        <div class="campaign-section">
+            <h2 class="campaign-title">Current Campaign</h2>
+
+            <!-- Stack of Campaign Containers -->
+            <div class="campaigns">
+                <div class="campaign">
+                    <h3>Campaign 1</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%"></div>
+                    </div>
+                </div>
+                <div class="campaign">
+                    <h3>Campaign 2</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="campaign">
+                    <h3>Campaign 3</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 25%"></div>
+                    </div>
+                </div>
+                <!-- Add more campaigns as needed -->
+            </div>
+        </div>
     </div>
+
     <!-- Popup Form -->
-    <div class="popup" id="popupForm" style="display: none">
-      <div class="popup-content">
-        <span class="close-popup">&times;</span>
-        <!-- Close button -->
-        <h3>Request Requirements</h3>
-        <form id="request-form">
-          <label for="ngo-name">NGO Name:</label>
-          <input type="text" id="ngo-name" required />
+    <div class="popup" id="popupForm">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Request Requirements</h3>
+            <form id="request-form">
+                <label for="ngo-name">Campaign Name:</label>
+                <input type="text" id="ngo-name" required />
 
-          <label for="reason">Reason for Requirement:</label>
-          <textarea id="reason" required></textarea>
+                <label for="reason">Additional Requirements:</label>
+                <textarea id="reason" required></textarea>
 
-          <label for="item">Item:</label>
-          <input type="text" id="item" required />
+                <label for="item">Item:</label>
+                <input type="text" id="item" required />
 
-          <label for="quantity">Quantity:</label>
-          <input type="number" id="quantity" required />
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" required />
 
-          <label for="approx-price">Approx. Price:</label>
-          <input type="number" id="approx-price" required />
+                <label for="approx-price">Approx. Price:</label>
+                <input type="number" id="approx-price" required />
 
-          <button type="submit">Send Request</button>
-        </form>
-      </div>
+                <button type="submit">Send Request</button>
+            </form>
+        </div>
     </div>
+
     <script src="campaign-script.js"></script>
-  </body>
+</body>
 </html>
