@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc; /* Off-white background */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Main container for positioning */
+.container {
+    width: 90%;
+    height: 100%; /* Full height for scrolling */
+    position: relative;
+    overflow: hidden; /* Prevent body from scrolling */
+}
+
+/* Profile Section (Top Left) */
+.profile-section {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #8b4513; /* Brown shade */
+}
+
+/* Add Section (Bottom Right) */
+.add-section {
+    position: fixed; /* Keeps it static */
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.add-btn {
+    background-color: #8b4513; /* Brown shade */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px; /* Larger size */
+    height: 60px;
+    font-size: 36px; /* Larger font size */
+    cursor: pointer;
+    margin-right: 10px; /* Space between button and text */
+    z-index: 10; /* Ensures it stays on top */
+}
+
+.create-request {
+    font-size: 18px; /* Font size for the text */
+    color: #8b4513; /* Brown shade */
+}
+
+/* Content Area with Scrollable Containers */
+.content {
+    display: flex;
+    flex-direction: column; /* Stacks containers vertically */
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100% - 80px); /* Space for profile section and button */
+    padding-top: 60px; /* Space for profile section */
+    overflow-y: auto; /* Enable scrolling */
+}
+
+/* Container Boxes */
+.box {
+    background-color: #deb887; /* Lighter brown for containers */
+    width: 80%;
+    height: 400px; /* Increased height for bigger size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Larger font size */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Space between containers */
+}
