@@ -4,33 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dynamic Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Chariton Landing Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"> <!-- Google Fonts -->
 </head>
 <body>
     <div class="hero">
         <div class="overlay"></div>
-        <div class="content">
-            <h1 class="fade-in">Connect for a Greater Cause</h1>
-            <p class="fade-in">Join us as a Donor, Retailer, or Organization.</p>
+        <div class="content fade-in">
+            <img src="MAIN.png" alt="Chariton Logo" class="logo"> <!-- Replace with your logo URL -->
+            <h1>Connect for a Greater Cause</h1>
+            <p class="subheading">Join us in making a difference!</p>
 
-            <div class="form-box fade-in">
-                <form action="#" method="post">
-                    <h2>Login / Sign Up</h2>
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    
-                    <div class="role-options">
-                        <label><input type="radio" name="role" value="Donor" required> Donor</label>
-                        <label><input type="radio" name="role" value="Retailer" required> Retailer</label>
-                        <label><input type="radio" name="role" value="Organization" required> Organization</label>
+            <div class="form-box">
+                <h2 class="role-title">Select Your Role</h2>
+                <div class="role-options">
+                    <div class="role-card" data-value="Donor">
+                        <h3>Donor</h3>
+                        <p>Support our mission with your generosity.</p>
                     </div>
-                    
-                    <button type="submit" class="submit-btn">Get Started</button>
-                </form>
+                    <div class="role-card" data-value="Retailer">
+                        <h3>Retailer</h3>
+                        <p>Join us in providing resources to those in need.</p>
+                    </div>
+                    <div class="role-card" data-value="Organization">
+                        <h3>Organization</h3>
+                        <p>Collaborate with us to make a bigger impact.</p>
+                    </div>
+                </div>
+                <button type="button" class="submit-btn">Login</button>
+                <button type="button" class="submit-btn">Sign Up</button>
             </div>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="scripts.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>

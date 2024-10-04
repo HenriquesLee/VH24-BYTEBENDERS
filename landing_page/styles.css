@@ -1,30 +1,23 @@
-/* Universal reset */
-* {
+/* Apply the color palette */
+body {
+    font-family: 'Roboto', sans-serif; /* Professional font for the body */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #000;
-    color: #FFD700;
+    height: 100vh;
+    background-color: #0e3149; /* Dark Blue Background */
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
 }
 
-/* Hero section with animations */
 .hero {
-    width: 100%;
-    height: 100vh;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url('https://example.com/charity-background.jpg'); /* Black to transparent gradient */
+    background-size: cover;
+    background-position: center;
 }
 
 .overlay {
@@ -33,111 +26,113 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent);
-    z-index: 1;
-    animation: moveGradient 8s infinite ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-@keyframes moveGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Content styling */
 .content {
-    z-index: 2;
+    position: relative;
+    z-index: 1;
     text-align: center;
-    color: #FFD700;
-    animation: fadeIn 2s ease forwards;
+    opacity: 0; /* Start as invisible */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
 }
 
-/* Fade-in animations */
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out forwards;
+.logo {
+    width: 200px; /* Increased logo size */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Rounded corners for the logo */
 }
 
-.content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px #FFD700;
+h1 {
+    font-family: 'Roboto', sans-serif; /* Professional font for the heading */
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for better visibility */
 }
 
-.content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: #FFD700;
-    text-shadow: 0 0 5px #FFD700;
+.subheading {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 300; /* Lighter font weight for the subheading */
 }
 
-/* Form box styling */
+/* Updated styles for the form box */
 .form-box {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
+    background-color: #050704; /* Dark background */
+    padding: 30px; /* Increased padding for the form box */
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
 }
 
-.form-box input[type="text"],
-.form-box input[type="password"] {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #333;
-    color: #FFD700;
-    font-size: 1rem;
-}
-
-input::placeholder {
-    color: #FFD700;
+.role-title {
+    color: #07b092; /* Updated Color for Role Title */
+    margin-bottom: 20px;
 }
 
 .role-options {
-    margin-bottom: 1.5rem;
-    color: #FFD700;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between cards */
+    margin-bottom: 20px; /* Space between options and button */
 }
 
-.role-options label {
-    margin-right: 1rem;
+.role-card {
+    background-color: #07b092; /* Teal Background for Cards */
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px; /* Fixed width for cards */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Pointer cursor for clickable cards */
+    text-align: center;
+    margin: 0 10px; /* Adjusted padding between cards */
 }
 
-input[type="radio"] {
-    margin-right: 0.5rem;
-    accent-color: #FFD700;
+.role-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    background-color: #06a083; /* Darker Teal on Hover */
 }
 
-/* Submit button with hover effect */
-.submit-btn {
+.role-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.role-card p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+button.submit-btn {
     width: 100%;
-    padding: 0.8rem;
-    background-color: #FFD700;
-    color: #000;
+    padding: 12px; /* Increased padding for a larger button */
+    background-color: #07b092; /* Teal Button */
+    color: #E3C6A0; /* Text color */
     border: none;
-    border-radius: 4px;
-    font-size: 1.2rem;
+    border-radius: 10px; /* Rounded corners */
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s ease;
+    font-size: 1.2rem; /* Increased font size */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+    margin: 10px 0; /* Space between buttons */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
-.submit-btn:hover {
-    background-color: #FFC400;
-    transform: translateY(-3px);
+button.submit-btn:hover {
+    background-color: #06a083; /* Darker Teal on Hover */
+    transform: translateY(-3px); /* Lift the button on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
 }
 
-/* Keyframe for subtle background movement */
-@keyframes moveBackground {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
+button.submit-btn:focus {
+    outline: none; /* Remove default focus outline */
 }
