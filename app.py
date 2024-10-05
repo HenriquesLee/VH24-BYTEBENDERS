@@ -1,15 +1,26 @@
 import bcrypt
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, jsonify, render_template, request, redirect, url_for, flash
 import sqlite3
-
+# import google.generativeai as genai  # Import Google Generative AI modu
 app = Flask(__name__, template_folder='templates', static_folder='templates')
 app.secret_key = "your_secret_key"  # Required for flash messages
 
-# Function to initialize the SQLite database
+# Configure Gemini API with the correct key
+# genai.configure(api_key="AIzaSyD1h8zNaWMAVk5VMDkyNZL2ByCaJwOGX9Y")
+
+# Function to generate FAQ responses using the Gemini model
+# def generate_faq_response(query):
+#     try:
+#         prompt = f"Answer the following FAQ: {query}"
+#         response = genai.generate_content(prompt)
+#         return response.text
+#     except Exception as e:
+#         return f"Error: {str(e)}"
+
+# Initialize SQLite Database
 def init_db():
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
-        
         # Create tables if they don't exist
         cursor.execute('''CREATE TABLE IF NOT EXISTS Donor (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +54,6 @@ init_db()
 
 @app.route('/')
 def landing_page():
-    # Serve landing_page/index.html from the 'landing_page' folder
     return render_template('landing_page/index.html')
 
 # Donor signup page
@@ -119,8 +129,8 @@ def organisation_signup():
                        (unique_id, name, email, hashed_password, contact))
         conn.commit()
     
-    flash("Organization signed up successfully!")
-    return redirect(url_for('organisation_dashboard_page'))  
+        flash("Organization signed up successfully!")
+        return redirect(url_for('organisation_dashboard_page')) 
 
 # Handle Donor login
 @app.route('/donor_login', methods=['POST'])
@@ -150,24 +160,16 @@ def org_login():
     # Verify organization credentials
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
-        # Fetch the stored hashed password from the database
-        cursor.execute("SELECT password FROM Organization WHERE email = ?", (org_login_email,))
-        result = cursor.fetchone()
+        cursor.execute("SELECT * FROM Organization WHERE email = ? AND password = ?", (org_login_email, org_login_password))
+        org = cursor.fetchone()
 
-        if result:
-            stored_hashed_password = result[0]
-
-            # Verify the entered password against the stored hash
-            if bcrypt.checkpw(org_login_password.encode('utf-8'), stored_hashed_password.encode('utf-8')):
-                flash("Login successful!")
-                return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
-            else:
-                flash("Invalid credentials. Please try again.", "error")
-                return redirect(url_for('organisation_signup_page'))
+        if org:
+            flash("Login successful!")
+            return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
         else:
             flash("Invalid credentials. Please try again.", "error")
             return redirect(url_for('organisation_signup_page'))
-        
+
 # Handle Request form submission
 @app.route('/submit-request', methods=['POST'])
 def submit_request():
@@ -194,6 +196,29 @@ def submit_request():
         flash(f"An error occurred: {str(e)}", "error")
 
     return redirect(url_for('organisation_dashboard_page'))
+
+# Fetch campaigns for display
+@app.route('/get_campaigns', methods=['GET'])
+def get_campaigns():
+    with sqlite3.connect("users.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Request")
+        campaigns = cursor.fetchall()
+        return jsonify([dict(campaign) for campaign in campaigns])
+
+# Chatbot API for FAQ
+@app.route('/chatbot', methods=['POST'])
+def chatbot():
+    try:
+        user_query = request.json.get('query')
+        if not user_query:
+            return jsonify({'error': 'No query provided'}), 400
+
+        # Generate response using the Gemini API
+        response = generate_faq_response(user_query)
+        return jsonify({'response': response}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5000)
