@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Campaign Page</title>
+    <title>Organization Dashboard</title>
   </head>
   <body>
     <div class="container">
       <!-- Profile Section -->
       <div class="profile-section">
         <img src="profile.jpg" alt="Profile" class="profile-pic" />
-        <span class="username">Username</span>
+        <span class="username">Organization Name</span>
       </div>
 
       <!-- Add Button with Tooltip -->
@@ -22,9 +22,8 @@
 
       <!-- Campaign Section -->
       <div class="campaign-section">
-        <h2 class="campaign-title">Current Campaign</h2>
+        <h2 class="campaign-title">Current Campaigns</h2>
 
-        <!-- Stack of Campaign Containers -->
         <div class="campaigns">
           <div class="campaign">
             <h3>Campaign 1</h3>
@@ -44,7 +43,6 @@
               <div class="progress" style="width: 25%"></div>
             </div>
           </div>
-          <!-- Add more campaigns as needed -->
         </div>
       </div>
     </div>
@@ -53,7 +51,7 @@
     <div class="popup" id="popupForm">
       <div class="popup-content">
         <span class="close-popup">&times;</span>
-        <h3>Request Requirements</h3>
+        <h3>Add a New Campaign</h3>
         <form id="request-form" action="/submit-request" method="POST">
           <label for="ngo-name">Campaign Name:</label>
           <input type="text" id="ngo-name" name="ngo-name" required />
@@ -75,6 +73,7 @@
       </div>
     </div>
 
-    <script src="campaign-script.js"></script>
+    <!-- Add your script links here -->
+    <script src="dashboard.js"></script>
   </body>
 </html>

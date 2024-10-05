@@ -9,7 +9,7 @@ def init_db():
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
         
-        # Create tables for Donor and Organization signups if they don't exist
+        # Create tables if they don't exist
         cursor.execute('''CREATE TABLE IF NOT EXISTS Donor (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             name TEXT NOT NULL,
@@ -50,19 +50,21 @@ def landing_page():
 def donor_signup_page():
     return render_template('Module_A/Donor_dashboard/signup.html')
 
-
 # Donor Dashboard 
 @app.route('/donor_dashboard_page')
 def donor_dashboard_page():
     return render_template('Module_A/Donor_dashboard/donor_dashboard.html')
+
 # Organization signup page
 @app.route('/organisation_signup_page')
 def organisation_signup_page():
     return render_template('Module_C/organisation_login_signup/signup.html')
-# Organization signup page
+
+# Organization dashboard page
 @app.route('/organisation_dashboard_page')
 def organisation_dashboard_page():
     return render_template('Module_C/organisation_login_signup/org_dashboard/dashboard.html')
+
 # Handle Donor signup form submission
 @app.route('/donor_signup', methods=['POST'])
 def donor_signup():
@@ -116,7 +118,7 @@ def organisation_signup():
     flash("Organization signed up successfully!")
     return redirect(url_for('organisation_dashboard_page'))  
 
-# Define a route for donor login (and similarly for organization login)
+# Handle Donor login
 @app.route('/donor_login', methods=['POST'])
 def donor_login():
     donor_login_email = request.form['loginEmail']
@@ -135,41 +137,50 @@ def donor_login():
             flash("Invalid credentials. Please try again.", "error")
             return redirect(url_for('donor_signup_page'))
         
+# Handle Organization login
 @app.route('/org_login', methods=['POST'])
 def org_login():
     org_login_email = request.form['loginEmail']
     org_login_password = request.form['loginPassword']
 
-    # Verify donor credentials
+    # Verify organization credentials
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM Organization WHERE email = ? AND password = ?", (org_login_email, org_login_password))
-        donor = cursor.fetchone()
+        org = cursor.fetchone()
 
-        if donor:
+        if org:
             flash("Login successful!")
-            return redirect(url_for('organisation_dashboard_page'))  # Redirect to donor dashboard upon login
+            return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
         else:
             flash("Invalid credentials. Please try again.", "error")
             return redirect(url_for('organisation_signup_page'))
         
+# Handle Request form submission
 @app.route('/submit-request', methods=['POST'])
 def submit_request():
-    campaign_name = request.form['ngo-name']
-    additional_requirements = request.form['reason']
-    item = request.form['item']
-    quantity = request.form['quantity']
-    approx_price = request.form['approx-price']
+    campaign_name = request.form.get('ngo-name')
+    additional_requirements = request.form.get('reason')
+    item = request.form.get('item')
+    quantity = request.form.get('quantity')
+    approx_price = request.form.get('approx-price')
 
-    # Insert the form data into the Request table
-    with sqlite3.connect("users.db") as conn:
-        cursor = conn.cursor()
-        cursor.execute('''INSERT INTO Request (campaign_name, additional_requirements, item, quantity, approx_price)
-                          VALUES (?, ?, ?, ?, ?)''',
-                       (campaign_name, additional_requirements, item, quantity, approx_price))
-        conn.commit()
+    # Debug: Print received data
+    print(f"Form Data Received: campaign_name={campaign_name}, additional_requirements={additional_requirements}, item={item}, quantity={quantity}, approx_price={approx_price}")
 
-    flash("Request submitted successfully!")
+    # Insert form data into Request table
+    try:
+        with sqlite3.connect("users.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute('''INSERT INTO Request (campaign_name, additional_requirements, item, quantity, approx_price)
+                              VALUES (?, ?, ?, ?, ?)''', 
+                           (campaign_name, additional_requirements, item, quantity, approx_price))
+            conn.commit()
+        flash("Request submitted successfully!")
+    except Exception as e:
+        print(f"Error inserting into database: {e}")
+        flash(f"An error occurred: {str(e)}", "error")
+
     return redirect(url_for('organisation_dashboard_page'))
 
 if __name__ == '__main__':
