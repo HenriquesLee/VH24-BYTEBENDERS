@@ -260,7 +260,7 @@
                     <h3>Institute</h3>
                     <p>Required: Wheat 8kg</p>
                     <input type="text" placeholder="Enter amount" />
-                    <button>Donate</button>
+                    <button id = "donateButton">Donate</button>
                 </div>
                 <div class="progress-item">
                     <h3>Institute</h3>
@@ -278,7 +278,7 @@
                     <h3>Institute</h3>
                     <p>Required: Wheat 8kg</p>
                     <input type="text" placeholder="Enter amount" />
-                    <button>Donate</button>
+                    <button >Donate</button>
                 </div>
             </div>
         </div>
@@ -307,6 +307,12 @@
             const drawer = document.getElementById('drawer');
             drawer.style.display = drawer.style.display === 'flex' ? 'none' : 'flex';
         }
+    
+        document.getElementById("donateButton").addEventListener("click", function() {
+            // Redirect to the donation link
+            window.location.href = "https://donate.stripe.com/test_5kA8yR9PA3DLdLa3cc"; // Replace with your actual donation link
+        });
+    
     </script>
 </body>
 </html>
