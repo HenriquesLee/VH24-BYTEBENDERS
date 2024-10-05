@@ -227,7 +227,6 @@
       }
 
       function handleSignUp(event) {
-        event.preventDefault(); // Prevent form from submitting
         try {
           const uniqueId = document.getElementById("uniqueId").value;
           const name = document.getElementById("name").value;
@@ -244,7 +243,6 @@
       }
 
       function handleLogin(event) {
-        event.preventDefault(); // Prevent form from submitting
         try {
           const email = document.getElementById("loginEmail").value;
           const password = document.getElementById("loginPassword").value;

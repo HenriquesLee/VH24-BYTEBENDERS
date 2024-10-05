@@ -99,8 +99,8 @@ def donor_signup():
                        (donor_name, donor_email, donor_password, donor_contact))
         conn.commit()
     
-    flash("Donor signed up successfully!")
-    return redirect(url_for('donor_dashboard_page'))
+        flash("Donor signed up successfully!")
+        return redirect(url_for('donor_dashboard_page'))
 
 # Handle Organization signup form submission
 @app.route('/organisation_signup', methods=['POST'])
@@ -168,8 +168,8 @@ def org_login():
             return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
         else:
             flash("Invalid credentials. Please try again.", "error")
-            return redirect(url_for('organisation_signup_page'))
-
+            return redirect(url_for('organisation_dashboard_page'))
+        
 # Handle Request form submission
 @app.route('/submit-request', methods=['POST'])
 def submit_request():
