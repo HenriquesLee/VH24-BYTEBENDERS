@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
@@ -110,9 +111,12 @@ def organisation_signup():
             flash("Email already exists! Please use a different email.", "error")
             return redirect(url_for('organisation_signup_page'))
         
+        # Hash the password before storing it
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
         # Insert new organization data into Organization table
         cursor.execute("INSERT INTO Organization (unique_id, name, email, password, contact) VALUES (?, ?, ?, ?, ?)", 
-                       (unique_id, name, email, password, contact))
+                       (unique_id, name, email, hashed_password, contact))
         conn.commit()
     
     flash("Organization signed up successfully!")
@@ -146,12 +150,20 @@ def org_login():
     # Verify organization credentials
     with sqlite3.connect("users.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Organization WHERE email = ? AND password = ?", (org_login_email, org_login_password))
-        org = cursor.fetchone()
+        # Fetch the stored hashed password from the database
+        cursor.execute("SELECT password FROM Organization WHERE email = ?", (org_login_email,))
+        result = cursor.fetchone()
 
-        if org:
-            flash("Login successful!")
-            return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
+        if result:
+            stored_hashed_password = result[0]
+
+            # Verify the entered password against the stored hash
+            if bcrypt.checkpw(org_login_password.encode('utf-8'), stored_hashed_password.encode('utf-8')):
+                flash("Login successful!")
+                return redirect(url_for('organisation_dashboard_page'))  # Redirect to organization dashboard upon login
+            else:
+                flash("Invalid credentials. Please try again.", "error")
+                return redirect(url_for('organisation_signup_page'))
         else:
             flash("Invalid credentials. Please try again.", "error")
             return redirect(url_for('organisation_signup_page'))

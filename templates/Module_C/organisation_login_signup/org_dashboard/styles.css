@@ -76,7 +76,7 @@ body {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear, transform 0.3s ease-in-out;
-    background-color: #07b092; /* Changed background color for better visibility */
+    background-color: #cf39cf; /* Changed background color for better visibility */
     color: white; /* Change text color to white for contrast */
     text-align: center;
     border-radius: 8px; /* More rounded corners */
@@ -226,6 +226,6 @@ form button {
 }
 
 form button:hover {
-    background-color: #07b092;
+    background-color: #bb0eca;
     transform: scale(1.05);
 }

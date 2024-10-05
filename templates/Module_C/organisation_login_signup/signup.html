@@ -169,7 +169,8 @@
             required
           />
         </div>
-        <button type="submit" class="submit-btn">Sign Up</button>
+        <button type="submit" class="submit-btn"onclick="handleSignUp(event)"
+        >Sign Up</button>
         <div class="toggle-link" onclick="toggleForms()">
           Already have an account? Login
         </div>
@@ -201,7 +202,7 @@
         <button
           type="submit"
           class="submit-btn"
-          onclick="window.location.href='org_dashboard/dashboard.html'"
+          onclick="handleLogin(event)"
         >
           Login
         </button>
