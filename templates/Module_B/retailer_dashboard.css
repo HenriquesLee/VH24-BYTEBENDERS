@@ -8,8 +8,24 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     display: flex;
-    margin: 0;
+    flex-direction: column;
     height: 100vh;
+}
+
+/* Header */
+.header {
+    background-color: #a92fa0;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Container for Sidebar and Main Content */
+.container {
+    display: flex;
+    flex-grow: 1;
 }
 
 /* Sidebar Profile Section */
@@ -21,7 +37,7 @@ body {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 100px); /* Adjust for header and footer */
 }
 
 .sidebar h2 {
@@ -44,7 +60,8 @@ body {
     font-weight: 500;
 }
 
-.profile-section p, li {
+.profile-section p,
+li {
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -133,6 +150,17 @@ body {
 
 .update-status:hover {
     background-color: #88287b;
+}
+
+/* Footer */
+.footer {
+    background-color: #a92fa0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Scrollbar for Main Content */

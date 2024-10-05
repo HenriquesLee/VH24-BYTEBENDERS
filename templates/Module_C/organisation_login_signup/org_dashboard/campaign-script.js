@@ -1,30 +1,33 @@
-// Get elements
-const addButton = document.querySelector('.add-btn');
-const popupForm = document.getElementById('popupForm');
-const closePopup = document.querySelector('.close-popup');
+// Get the modal
+const popupForm = document.getElementById("popupForm");
 
-// Show the popup when the add button is clicked
-addButton.addEventListener('click', () => {
-    popupForm.style.display = 'flex';
-});
+// Get the button that opens the modal
+const addBtn = document.querySelector(".add-btn");
 
-// Close the popup when the close button is clicked
-closePopup.addEventListener('click', () => {
-    popupForm.style.display = 'none';
-});
+// Get the <span> element that closes the modal
+const closeBtn = document.querySelector(".close-popup");
 
-// Close the popup when clicking outside of it
-window.addEventListener('click', (event) => {
-    if (event.target === popupForm) {
-        popupForm.style.display = 'none';
+// When the user clicks on the button, open the modal
+addBtn.onclick = function () {
+    popupForm.style.display = "flex"; // Change to flex to center the popup
+};
+
+// When the user clicks on <span> (x), close the modal
+closeBtn.onclick = function () {
+    popupForm.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == popupForm) {
+        popupForm.style.display = "none";
     }
-});
+};
 
-// Handle form submission
-const requestForm = document.getElementById('request-form');
-requestForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form submission
-    alert('Request sent!'); // Show a success message (you can replace this with actual functionality)
-    popupForm.style.display = 'none'; // Close the popup
-    requestForm.reset(); // Reset form fields
-});
+// Prevent default form submission
+document.getElementById("request-form").onsubmit = function (event) {
+    event.preventDefault();
+    // Add your form submission logic here
+    console.log("Form submitted!");
+    popupForm.style.display = "none"; // Close the popup after submission
+};

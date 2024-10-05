@@ -5,65 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Management</title>
     <link rel="stylesheet" href="retailer_dashboard.css">
-</head>
+</head><style>
+body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes up full height */
+            margin: 0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #781580;
+            padding: 10px; /* Reduced padding */
+            text-align: left;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            width: 70px; /* Increased logo size */
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header nav {
+            display: inline-block;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+    /* Footer styles */
+    footer {
+            background-color: #781580;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto; /* Push footer to the bottom of the page */
+        }
+
+    footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+    }
+</style>
 <body>
-    <div class="sidebar">
-        <h2>Profile</h2>
-        <div class="profile-section">
-            <h3>Personal Information</h3>
-            <p>Name: John Doe</p>
-            <p>Email: john@example.com</p>
-        </div>
+    <header>
+        <img src="CharitOn_white.png" alt="Chartiton Logo" />
+        <nav>
+            <a onclick="window.location.href='../landing_page/index.html'">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Help</a>
+        </nav>
+    </header>
 
-        <div class="profile-section">
-            <h3>Track Payment</h3>
-            <ul>
-                <li>Last Payment: $50</li>
-                <li>Next Due: $25</li>
-            </ul>
-        </div>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Profile</h2>
+            <div class="profile-section">
+                <h3>Personal Information</h3>
+                <p>Name: John Doe</p>
+                <p>Email: john@example.com</p>
+            </div>
 
-        <div class="profile-section">
-            <h3>Deliveries</h3>
-            <ul>
-                <li>Last Delivered: 1st Oct</li>
-                <li>Upcoming: 10th Oct</li>
-            </ul>
-        </div>
-    </div>
+            <div class="profile-section">
+                <h3>Track Payment</h3>
+                <ul>
+                    <li>Last Payment: $50</li>
+                    <li>Next Due: $25</li>
+                </ul>
+            </div>
 
-    <div class="main-content">
-        <div class="section">
-            <h2>Incoming Requests</h2>
-            <div class="request-card">
-                <p><strong>Amount:</strong> $200</p>
-                <p><strong>Quantity:</strong> 5</p>
-                <p><strong>Item:</strong> Groceries</p>
+            <div class="profile-section">
+                <h3>Deliveries</h3>
+                <ul>
+                    <li>Last Delivered: 1st Oct</li>
+                    <li>Upcoming: 10th Oct</li>
+                </ul>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Process Requests</h2>
-            <div class="request-card">
-                <p><strong>Order Status:</strong></p>
-                <div class="progress-bar">
-                    <div class="progress" id="progressBar"></div>
+        <div class="main-content">
+            <div class="section">
+                <h2>Incoming Requests</h2>
+                <div class="request-card">
+                    <p><strong>Amount:</strong> $200</p>
+                    <p><strong>Quantity:</strong> 5</p>
+                    <p><strong>Item:</strong> Groceries</p>
                 </div>
-                <select id="statusUpdate" class="update-status" onchange="updateProgress()">
-                    <option value="0">Packaging</option>
-                    <option value="50">Shipped</option>
-                    <option value="100">Delivery</option>
-                </select>
+            </div>
+
+            <div class="section">
+                <h2>Process Requests</h2>
+                <div class="request-card">
+                    <p><strong>Order Status:</strong></p>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <select id="statusUpdate" class="update-status" onchange="updateProgress()">
+                        <option value="0">Packaging</option>
+                        <option value="50">Shipped</option>
+                        <option value="100">Delivery</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 CharitOn | <a href="#">Terms Of Services</a> | <a href="#">Privacy Policy</a>| <a href="#">Contact Us</a></p>
+    </footer>
+
 
     <script>
         function updateProgress() {
             const progressBar = document.getElementById('progressBar');
             const statusUpdate = document.getElementById('statusUpdate').value;
-            
-            // Update the width of the progress bar based on the dropdown value with animation
             progressBar.style.width = statusUpdate + '%';
         }
     </script>

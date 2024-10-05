@@ -4,48 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Organization Dashboard</title>
-  </head>
-  <body>
-    <div class="container">
-      <!-- Profile Section -->
-      <div class="profile-section">
-        <img src="profile.jpg" alt="Profile" class="profile-pic" />
-        <span class="username">Organization Name</span>
-      </div>
+    <title>Campaign Page</title>
+    <style>
+        /* Body setup for full-page scroll and footer at bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes up full height */
+            margin: 0;
+        }
 
-      <!-- Add Button with Tooltip -->
-      <div class="add-section" id="add-section">
-        <button class="add-btn">+</button>
-        <div class="tooltip">Add New Campaign</div>
-      </div>
+        /* Header styles */
+        header {
+            background-color: #781580;
+            padding: 10px; /* Reduced padding */
+            text-align: left;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            width: 70px; /* Increased logo size */
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header nav {
+            display: inline-block;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content styling */
+        .container {
+            flex: 1;
+            padding: 0px;
+            overflow-y: auto; /* Allow the container to scroll if needed */
+        }
+
+        /* Campaign section styles */
+        .campaign-section {
+            margin-top: 0; /* Remove top margin */
+        }
+
+        .campaign-title {
+            font-size: 24px;
+            margin: 10px 0; /* Adjusted margin */
+            color: #781580;
+        }
+
+        .campaigns .campaign {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #781580;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #781580;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto; /* Push footer to the bottom of the page */
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Add Section (Bottom Right) */
+        .add-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .add-btn {
+            background-color: #a92fa0;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            background-color: #07b092;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: absolute;
+            bottom: 70px;
+            width: auto;
+            z-index: 10;
+        }
+
+        .add-btn:hover + .tooltip {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Logo and Navigation Links -->
+    <header>
+        <img src="CharitOn_white.png" alt="Chartiton Logo" />
+        <nav>
+            <a href="../landing_page/index.html">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Help</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Add Button with Tooltip -->
+        <div class="add-section" id="add-section">
+            <button class="add-btn">+</button>
+            <div class="tooltip">Add New Campaign</div>
+        </div>
 
       <!-- Campaign Section -->
       <div class="campaign-section">
         <h2 class="campaign-title">Current Campaigns</h2>
 
-        <div class="campaigns">
-          <div class="campaign">
-            <h3>Campaign 1</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 40%"></div>
+            <!-- Stack of Campaign Containers -->
+            <div class="campaigns">
+                <div class="campaign">
+                    <h3>Campaign 1</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%"></div>
+                    </div>
+                </div>
+                <div class="campaign">
+                    <h3>Campaign 2</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="campaign">
+                    <h3>Campaign 3</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 25%"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 2</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 70%"></div>
-            </div>
-          </div>
-          <div class="campaign">
-            <h3>Campaign 3</h3>
-            <div class="progress-bar">
-              <div class="progress" style="width: 25%"></div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CharitOn | <a href="#">Terms Of Services</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
 
     <!-- Popup Form -->
     <div class="popup" id="popupForm">
